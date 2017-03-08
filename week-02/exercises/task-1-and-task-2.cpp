@@ -50,6 +50,87 @@ public:
 		cout << "Experience: " << experience << '/' << level * 100 << endl;
 		cout << "Strength: " << strength << " Speed: " << speed << " Intellect: " << intellect << endl;
 	}
+	
+// Сетъри
+	void setName(char* _name)
+	{
+		strcpy(name, _name);
+	}
+
+	void setHealth(int _health)
+	{
+		if (_health >= 0)
+			health = _health;
+		else
+			cout << "Wrong value!" << endl;
+	}
+
+	void setLevel(unsigned _level)
+	{
+		if (_level > level)
+			level = _level;
+		else
+			cout << "Wrong value!" << endl;
+	}
+
+	void setExperience(unsigned _experience)
+	{
+		if (_experience > 0)
+			experience = _experience;
+		else
+			cout << "Wrong value!" << endl;
+	}
+
+	void setStrength(int _strength)
+	{
+		strength = _strength;
+	}
+
+	void setSpeed(int _speed)
+	{
+		speed = _speed;
+	}
+
+	void setIntellect(int _intellect)
+	{
+		intellect = _intellect;
+	}
+
+//Гетъри
+	const char* getName() const
+	{
+		return name;
+	}
+
+	int getHealth() const
+	{
+		return health;
+	}
+
+	unsigned getLevel() const
+	{
+		return level;
+	}
+
+	unsigned getExperience() const
+	{
+		return experience;
+	}
+
+	int getStrength() const
+	{
+		return strength;
+	}
+
+	int getSpeed() const
+	{
+		return speed;
+	}
+
+	int getIntellect() const
+	{
+		return intellect;
+	}
 };
 
 int main()
