@@ -88,8 +88,9 @@ void testDynamic1()
 		cin >> arr[i];
 		avg += arr[i];
 	}
-
+	
 	cout << avg / size << endl;
+	delete[] arr;
 }
 
 void testDynamic2()
@@ -98,6 +99,7 @@ void testDynamic2()
 	cout << "Enter size: ";
 	cin >> size;
 
+	//Заделяме памет и въвеждаме стойностите
 	double **matrix = new double*[size];
 	for (int i = 0; i < size; i++)
 	{
@@ -108,6 +110,7 @@ void testDynamic2()
 		}
 	}
 
+	//Транспонираме матрицата
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = i + 1; j < size; j++)
@@ -117,7 +120,8 @@ void testDynamic2()
 			matrix[i][j] = tmp;
 		}
 	}
-
+	
+	//Извеждаме транспонираната матрица
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = 0; j < size; j++)
@@ -126,6 +130,13 @@ void testDynamic2()
 		}
 		cout << endl;
 	}
+	
+	//Освобождаваме заделената памет
+	for (int i = 0; i < size; i++)
+	{
+		delete[] matrix[i];
+	}
+	delete[] matrix;
 }
 
 int main()
