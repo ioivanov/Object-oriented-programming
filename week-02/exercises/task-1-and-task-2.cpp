@@ -4,6 +4,21 @@
 using namespace std;
 
 //Task 1
+/*
+struct Hero
+{
+	char name[101];
+	int currentHealth;
+	int maxHealth;
+	unsigned level; // unsigned int
+	unsigned exp;	//unsigned int
+	int strength;
+	int speed;
+	int intellect;
+};
+*/
+
+//Task 2
 class Hero
 {
 	char name[101];
@@ -15,21 +30,7 @@ class Hero
 	int intellect;
 
 public:
-
-	//Конструктор по подразбиране
-	Hero()
-	{
-		strcpy(name, "");
-		health = 10;
-		level = 1;
-		experience = 0;
-		strength = 0;
-		speed = 0;
-		intellect = 0;
-	}
-
-	//Конструктор с аргументи
-	Hero(char* _name, int _health, unsigned _level, unsigned _experience,
+	void init(char* _name, int _health, unsigned _level, unsigned _experience,
 		int _strength, int _speed, int _intellect)
 	{
 		strcpy(name, _name);
@@ -41,104 +42,101 @@ public:
 		intellect = _intellect;
 	}
 
-	//Конструктор за копиране
-	Hero(Hero const& h)
+	void print()
 	{
-		strcpy(name, h.name);
-		health = h.health;
-		level = h.level;
-		experience = h.experience;
-		strength = h.strength;
-		speed = h.speed;
-		intellect = h.intellect;
-	}
- };
- 
-void testHero()
-{
-	Hero h; //Default constructor
-	h.print();
-
-	Hero hero("Gandalf", 990, 99, 9899, 10, 1, 256); //Constructor with parameters
-	hero.print();
-
-	Hero hero1(hero); // Copy constructor
-	hero1.setName("Saruman");
-	hero1.print();
-
-	hero1.setLevel(98);
-}
- 
- //Task 2
-void testDynamic1()
-{
-	int size;
-	cout << "Enter size: ";
-	cin >> size;
-
-	double *arr = new double[size];
-	double avg = 0;
-
-	for (int i = 0; i < size; i++)
-	{
-		cin >> arr[i];
-		avg += arr[i];
+		cout << "Name: " << name << endl;
+		cout << "Health: " << health << '/' << level * 10 << endl;
+		cout << "Level: " << level << endl;
+		cout << "Experience: " << experience << '/' << level * 100 << endl;
+		cout << "Strength: " << strength << " Speed: " << speed << " Intellect: " << intellect << endl;
 	}
 	
-	cout << avg / size << endl;
-	delete[] arr;
-}
-
-void testDynamic2()
-{
-	int size;
-	cout << "Enter size: ";
-	cin >> size;
-
-	//Заделяме памет и въвеждаме стойностите
-	double **matrix = new double*[size];
-	for (int i = 0; i < size; i++)
+// Сетъри
+	void setName(char* _name)
 	{
-		matrix[i] = new double[size];
-		for (int j = 0; j < size; j++)
-		{
-			cin >> matrix[i][j];
-		}
+		strcpy(name, _name);
 	}
 
-	//Транспонираме матрицата
-	for (int i = 0; i < size; i++)
+	void setHealth(int _health)
 	{
-		for (int j = i + 1; j < size; j++)
-		{
-			double tmp = matrix[j][i];
-			matrix[j][i] = matrix[i][j];
-			matrix[i][j] = tmp;
-		}
+		if (_health >= 0)
+			health = _health;
+		else
+			cout << "Wrong value!" << endl;
 	}
-	
-	//Извеждаме транспонираната матрица
-	for (int i = 0; i < size; i++)
+
+	void setLevel(unsigned _level)
 	{
-		for (int j = 0; j < size; j++)
-		{
-			cout << matrix[i][j] << ' ';
-		}
-		cout << endl;
+		if (_level > level)
+			level = _level;
+		else
+			cout << "Wrong value!" << endl;
 	}
-	
-	//Освобождаваме заделената памет
-	for (int i = 0; i < size; i++)
+
+	void setExperience(unsigned _experience)
 	{
-		delete[] matrix[i];
+		if (_experience > 0)
+			experience = _experience;
+		else
+			cout << "Wrong value!" << endl;
 	}
-	delete[] matrix;
-}
+
+	void setStrength(int _strength)
+	{
+		strength = _strength;
+	}
+
+	void setSpeed(int _speed)
+	{
+		speed = _speed;
+	}
+
+	void setIntellect(int _intellect)
+	{
+		intellect = _intellect;
+	}
+
+//Гетъри
+	const char* getName() const
+	{
+		return name;
+	}
+
+	int getHealth() const
+	{
+		return health;
+	}
+
+	unsigned getLevel() const
+	{
+		return level;
+	}
+
+	unsigned getExperience() const
+	{
+		return experience;
+	}
+
+	int getStrength() const
+	{
+		return strength;
+	}
+
+	int getSpeed() const
+	{
+		return speed;
+	}
+
+	int getIntellect() const
+	{
+		return intellect;
+	}
+};
 
 int main()
 {
-	//testHero();
-	//testDynamic1();
-	//testDynamic2();
+	Hero h;
+	h.init("Anonymous", 10, 1, 0, 3, 2, 1);
+	h.print();
     return 0;
 }
