@@ -59,10 +59,6 @@ void testHero()
 	Hero h; //Default constructor
 	h.print();
 
-/*	h.level=10;
- *	cout<<h.name;
- */
-
 	Hero hero("Gandalf", 990, 99, 9899, 10, 1, 256); //Constructor with parameters
 	hero.print();
 
