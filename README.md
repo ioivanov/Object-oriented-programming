@@ -9,3 +9,5 @@
 Материалите са изготвени от Ивайло Иванов и Алекс Сърбински.
 
 https://codebunk.com/b/995126197/
+
+https://docs.google.com/document/d/1hRZ4lLx6goZYeQ9lGIWw57Tc_xAaYI72cde67ax9JOQ/edit?usp=sharing
